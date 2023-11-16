@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "831318455172",
+    "firebase_url": "https://milkteashop-tunztunzz-default-rtdb.firebaseio.com",
+    "project_id": "milkteashop-tunztunzz",
+    "storage_bucket": "milkteashop-tunztunzz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831318455172:android:9d7acb206e0718f4d823d1",
+        "android_client_info": {
+          "package_name": "com.example.vdtea"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEXF7lYl1jjd_sUhcFliVexH5m8iQdmvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
