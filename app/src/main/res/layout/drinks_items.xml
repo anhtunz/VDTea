@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_5"
+    android:id="@+id/drinksitem">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/drinksImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="asddadas" />
+
+        <LinearLayout
+            android:id="@+id/drinks_center_linearLayout"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/drinksImage"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/drinksName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên món ăn"
+                android:layout_toRightOf="@+id/drinksImage"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:id="@+id/sold_liked_drinks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/drinksImage"
+                android:layout_below="@id/drinksName"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_5">
+
+                <TextView
+                    android:id="@+id/drinkssold"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:text="100 đã bán" />
+
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:text="|"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:layout_marginRight="@dimen/dp_4" />
+
+                <TextView
+                    android:id="@+id/drinksrating"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Đánh giá: 3.5/5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/drinksImage"
+                android:layout_below="@id/sold_liked_drinks"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginLeft="@dimen/dp_5"
+                >
+
+                <TextView
+                    android:id="@+id/drinksOriginalPrice"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="150,000đ" />
+
+                <TextView
+                    android:id="@+id/drinksSalePrice"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="35,000đ"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold"
+                    android:textColor="@color/red" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@id/drinks_center_linearLayout"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/btn_subtract_drinks"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_white_shape_border_orange"
+                android:text="-"
+                android:gravity="center"
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/drinks_count"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="20"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/btn_add_drinks"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_orange_shape_border_orange"
+                android:text="+"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/dp_16"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

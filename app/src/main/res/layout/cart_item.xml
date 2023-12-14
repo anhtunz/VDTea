@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_5">
+
+        <ImageView
+            android:id="@+id/cart_drinksImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/milktea_icon" />
+
+        <TextView
+            android:id="@+id/cart_drinksName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_toRightOf="@id/cart_drinksImage"
+            android:text="Tên đồ uống"
+            android:textStyle="bold"
+            android:textSize="@dimen/dp_16"/>
+        <LinearLayout
+            android:id="@+id/cart_LinearLayout"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_below="@id/cart_drinksName"
+            android:layout_toRightOf="@id/cart_drinksImage">
+
+            <TextView
+                android:id="@+id/cart_drinksIce"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="100% Da" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text=", " />
+            <TextView
+                android:id="@+id/cart_drinksSize"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Size M" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text=", " />
+            <TextView
+                android:id="@+id/cart_drinksSugar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="100% Duong" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_14"
+            android:gravity="center"
+            android:layout_toRightOf="@id/cart_LinearLayout"
+            android:layout_below="@id/cart_drinksName">
+            <TextView
+                android:id="@+id/cart_drinksSub"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_white_shape_border_orange"
+                android:text="-"
+                android:gravity="center"
+                android:textColor="@color/orange" />
+            <TextView
+                android:id="@+id/cart_drinksCount"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="20"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/cart_drinksAdd"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_orange_shape_border_orange"
+                android:text="+"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/dp_16"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_below="@id/cart_LinearLayout"
+            android:layout_toRightOf="@id/cart_drinksImage">
+
+            <TextView
+                android:id="@+id/cart_drinksOriginalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="999,000đ"
+                android:textSize="@dimen/dp_14" />
+
+            <TextView
+                android:id="@+id/cart_drinksSalePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="315,000đ"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold"
+                android:textColor="@color/red" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
