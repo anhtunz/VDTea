@@ -18,13 +18,22 @@ import com.example.vdtea.model.Cart;
 import com.example.vdtea.model.Drinks;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import static android.content.ContentValues.TAG;
-public class CartAdapter extends FirebaseRecyclerAdapter<Cart, CartAdapter.cartViewHolder> {
 
+import java.util.HashMap;
+import java.util.Map;
+
+public class CartAdapter extends FirebaseRecyclerAdapter<Cart, CartAdapter.cartViewHolder> {
+    FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    FirebaseUser user;
     long totalPrice = 0, totalSalePrice = 0,count,count_new,drinksOPrice, drinksSPrice,sale;
     CartTouchButtonListener cartTouchButtonListener;
     /**
@@ -40,6 +49,7 @@ public class CartAdapter extends FirebaseRecyclerAdapter<Cart, CartAdapter.cartV
 
     @Override
     protected void onBindViewHolder(@NonNull cartViewHolder holder, int position, @NonNull Cart cart) {
+        user = mAuth.getCurrentUser();
         String drinksID = cart.getDrinks_id();
         holder.drinksIce.setText(cart.getDrinks_ice());
         holder.drinksSize.setText(cart.getDrinks_size());
@@ -57,8 +67,11 @@ public class CartAdapter extends FirebaseRecyclerAdapter<Cart, CartAdapter.cartV
                         .error(com.google.firebase.appcheck.interop.R.drawable.notification_tile_bg)
                         .into(holder.image);
                 holder.drinksOPrice.setText(String.valueOf(drinks.getPrice()) + ",000đ");
+
                 drinksOPrice = drinks.getPrice() ;
                 totalPrice += drinks.getPrice()* cart.getQuantity();
+                Log.d(TAG, "DrinksOPrice " + totalPrice);
+                Log.d(TAG, "DrinksSPrice " + totalSalePrice);
                 sale = drinks.getSale();
                 Log.d(TAG, "sale " + sale);
                 if(drinks.getSale() == 1){
@@ -83,13 +96,14 @@ public class CartAdapter extends FirebaseRecyclerAdapter<Cart, CartAdapter.cartV
                         if (cart.getQuantity() == 1){
                             return;
                         }
-                        count = cart.getQuantity();
-                        Log.d(TAG, "CartID:  " + FirebaseDatabase.getInstance().getReference().child("cart")
-                                .child("mQLKvV4K0COxLDJX5sVmyAIItnI3")
-                                .child(getRef(position).getKey()));
-                        Log.d(TAG, "Count" + count);
-                        final long count_new = count --;
+                        count_new = cart.getQuantity() - 1;
+                        Log.d(TAG, "Countnew: " + count_new);
                         holder.drinksCount.setText(String.valueOf(count_new));
+//                        Map<String, Object> map = new HashMap<>();
+//                        map.put("quantity",Long.parseLong(String.valueOf(count_new)));
+//                        FirebaseDatabase.getInstance().getReference().child("cart")
+//                                .child(user.getUid())
+//                                .child(getRef(position).getKey()).updateChildren(map);
                         if(drinks.getSale() == 1){
                             totalPrice -= drinksOPrice;
                             totalSalePrice -= drinksOPrice;
