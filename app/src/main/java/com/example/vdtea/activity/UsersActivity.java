@@ -72,7 +72,7 @@ public class UsersActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            tv_email.setText(currentUser.getEmail());
+            tv_email.setText(currentUser.getDisplayName());
         }
     }
 
@@ -97,7 +97,6 @@ public class UsersActivity extends AppCompatActivity {
 
         Button updatePass = dialog.findViewById(R.id.btnChangePassword);
         updatePass.setOnClickListener(view -> {
-
             String newPassStr = newPass.getText().toString();
             String rePassStr = rePass.getText().toString();
                         if (newPassStr.isEmpty()) {

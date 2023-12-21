@@ -9,23 +9,67 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/title"
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/main_AppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Danh sách đồ uống"
-            android:padding="@dimen/dp_5"
-            android:textSize="@dimen/dp_24"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:background="@color/holo_orange_dark"
+                app:titleTextColor="@color/white"
+                app:titleCentered="true"
+                android:layout_height="?attr/actionBarSize" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/main_AppBar"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:background="@color/white">
+            <EditText
+                android:id="@+id/edt_search_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_white_shape_border_orange"
+                android:hint="Tìm kiếm đồ uống"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:padding="@dimen/define_dimen_10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_12" />
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="@dimen/define_dimen_30"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/img_search"
+                android:background="@color/orange" />
+
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/define_dimen_5"
+                android:padding="@dimen/define_dimen_5"
+                android:src="@drawable/search_icon" />
+        </RelativeLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv"
             android:scrollbars="vertical"
             android:padding="@dimen/dp_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/layout_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -34,13 +34,12 @@ public class CommentAdapter extends FirebaseRecyclerAdapter<Comment,CommentAdapt
         holder.content.setText(comment.getContent());
         holder.time.setText(comment.getTime());
         Glide.with(holder.avatar.getContext())
-                .load("lalalala")
+                .load("https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/324259259_565764695569197_5052157878188652179_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeF03-2u94VrZi4IUeB7DdVUnBsSXSmDX7KcGxJdKYNfskYBEOIh7s3NjGwn5iu6bMMxfy6Xfkie5DMaJQVfd58R&_nc_ohc=s8-lSjcVuz0AX966YZg&_nc_ht=scontent.fhan20-1.fna&oh=00_AfCr9BWsgYG55XEEzXj-7-mdY97Y6CbnA0ITQT1fEQCD1w&oe=658A4E65")
                 .placeholder(R.drawable.avatar)
                 .circleCrop()
                 .error(R.drawable.avatar)
                 .into(holder.avatar);
     }
-
     @NonNull
     @Override
     public commentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

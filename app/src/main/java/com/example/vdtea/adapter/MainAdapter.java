@@ -53,7 +53,6 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Drinks, MainAdapter.myV
             holder.priceOriginal.setPaintFlags(holder.priceOriginal.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.priceSale.setText(String.valueOf( (model.getPrice()-(model.getPrice() * model .getSale()/ 100) ) + ",000đ"));
         }
-        Log.d(TAG, "onBindViewHolder: "+ model.getDrinks_image());
         Glide.with(holder.img.getContext())
                 .load(model.getDrinks_image())
                 .placeholder(com.google.firebase.database.R.drawable.common_google_signin_btn_icon_dark_normal)
@@ -63,12 +62,10 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Drinks, MainAdapter.myV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Đã goi hàm omclixk");
                 String data = getRef(position).getKey();
                 Intent intent = new Intent(v.getContext(), DrinksDetailActivity.class);
                 intent.putExtra("KEY_DATA",data);
                 v.getContext().startActivity(intent);
-                Log.d(TAG, "Data in MainAdapter: "+data);
             }
         });
     }
@@ -79,14 +76,7 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Drinks, MainAdapter.myV
        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.drinks_items,parent,false);
        return new myViewHolder(view);
     }
-//    public void setItemClickListener(ItemClickListener itemClickListener) {
-//        this.itemClickListener = itemClickListener;
-//    }
-//
-//        public interface ItemClickListener {
-//        void onClickItem(Drinks drinks);
-//
-//    }
+
     class myViewHolder extends RecyclerView.ViewHolder{
 
         ImageView img;
