@@ -13,19 +13,11 @@
             android:id="@+id/background1"
             android:layout_width="wrap_content"
             android:layout_height="273dp"
-            android:src="@drawable/muadi"
+            android:src="@drawable/register"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:scaleType="fitXY" />
-
-        <ImageView
-            android:id="@+id/background2"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:src="@drawable/milktea_icon"
-            app:layout_constraintLeft_toLeftOf="@+id/background1"
-            app:layout_constraintTop_toTopOf="@+id/background1" />
 
         <ScrollView
             android:layout_width="match_parent"
