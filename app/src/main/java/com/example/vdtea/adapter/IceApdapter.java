@@ -29,7 +29,6 @@ public class IceApdapter extends FirebaseRecyclerAdapter<Ice, IceApdapter.iceVie
      */
     IceCheckboxListenner iceCheckboxListenner;
     public IceApdapter(@NonNull FirebaseRecyclerOptions<Ice> options, IceCheckboxListenner listenner) {
-
         super(options);
         this.iceCheckboxListenner = listenner;
     }

@@ -46,11 +46,6 @@ public class DrinksDetailActivity extends AppCompatActivity {
                     .commit();
         }
 
-
-//        String receivedData = getIntent().getStringExtra("KEY_DATA");
-//        Log.d(TAG, "KEY_DATA: "+ receivedData);
-
-
     }
 
 

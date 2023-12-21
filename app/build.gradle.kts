@@ -54,4 +54,8 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     implementation ("com.afollestad.material-dialogs:core:3.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("com.squareup.retrofit2:converter-gson:2.1.0")
 }
