@@ -35,6 +35,7 @@
         </activity>
         <activity
             android:name=".activity.UsersActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false">
 
             <!-- <intent-filter> -->
@@ -84,6 +85,7 @@
         </activity>
         <activity
             android:name=".activity.BookingActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false">
 
             <!-- <intent-filter> -->
