@@ -80,18 +80,6 @@ public class BookingAdapter extends FirebaseRecyclerAdapter<Booking,BookingAdapt
                             .setContentHolder(new ViewHolder(R.layout.activity_rating))
                             .create();
                     dialogPlus.show();
-//                    UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
-//                            .setDisplayName("TunzTunzz")
-//                            .build();
-//                    user.updateProfile(profileUpdate)
-//                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if (task.isSuccessful()) {
-//                                        Log.d(TAG, "Update user thanh cong.");
-//                                    }
-//                                }
-//                            });
                     View ratingView = dialogPlus.getHolderView();
                     EditText reviewText = ratingView.findViewById(R.id.rating_edtReview);
                     RatingBar ratingBar = ratingView.findViewById(R.id.ratingbarStar);
@@ -104,24 +92,23 @@ public class BookingAdapter extends FirebaseRecyclerAdapter<Booking,BookingAdapt
                             String review = String.valueOf(reviewText.getText());
                             List<Booking.Menu> menuList = booking.getMenu();
                             for (Booking.Menu menu : menuList){
-                                Log.d(TAG, "onClick: " + menu.getDrinks_id());
                                 FirebaseDatabase.getInstance().getReference().child("drinks").child(menu.getDrinks_id())
                                         .addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                 Drinks drinks = snapshot.getValue(Drinks.class);
-                                                Log.d(TAG, "Name: "+ drinks.getDrinks_name());
-                                                Log.d(TAG, "Rating: "+ drinks.getRating());
+//                                                Log.d(TAG, "Name: "+ drinks.getDrinks_name());
+//                                                Log.d(TAG, "Rating: "+ drinks.getRating());
                                                 count = drinks.getSold_count() +1;
                                                 double new_rating = Math.round(test);
                                                 double danggia = ((drinks.getSold_count() * drinks.getRating()) + new_rating) / (drinks.getSold_count() +1);
                                                 String formattedValue = String.format(Locale.US, "%.2f", danggia);
                                                 double final_rating = Double.parseDouble(formattedValue);
-                                                Log.d(TAG, "Sold: " + count);
-                                                Log.d(TAG, "Rating original: "+ final_rating);
-                                                Log.d(TAG, "Rating_last : " + drinks.getDrinks_name() + ": " + formattedValue);
-                                                Log.d(TAG, "Username: " + user.getDisplayName());
-                                                Log.d(TAG, "Binh luan: " + review);
+//                                                Log.d(TAG, "Sold: " + count);
+//                                                Log.d(TAG, "Rating original: "+ final_rating);
+//                                                Log.d(TAG, "Rating_last : " + drinks.getDrinks_name() + ": " + formattedValue);
+//                                                Log.d(TAG, "Username: " + user.getDisplayName());
+//                                                Log.d(TAG, "Binh luan: " + review);
                                                 updateCount(menu.getDrinks_id(), count);
                                                 updateRating(menu.getDrinks_id(),final_rating);
                                                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
@@ -173,8 +160,6 @@ public class BookingAdapter extends FirebaseRecyclerAdapter<Booking,BookingAdapt
             holder.btn_reviews.setVisibility(View.GONE);
         }
     }
-
-
 
     @NonNull
     @Override
