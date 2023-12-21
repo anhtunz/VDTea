@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-
+    implementation ("com.afollestad.material-dialogs:core:3.3.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.github.bumptech.glide:glide:4.16.0")

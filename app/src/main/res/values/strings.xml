@@ -7,8 +7,22 @@
     <string name="Register_lable">Chưa có tài khoản? Đăng kí ngay!</string>
     <string name="long_text">In the generated Compose code, Relay’s RelayText composable can accept either String or AnnotatedString. Relay generates Kotlin code that uses the AnnotatedString.Builder and SpanStyle classes to render multiple styles in text. The code fragment below shows wide letter spacing being applied to the word “jumps”, followed by a space with no custom style, followed by the word “over” in bold italic.</string>
     <string name="comment_text">Bình luận</string>
+    <string name="exit">Bạn có muốn thoát ứng dụng?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    // Tab Menu
+    <string name="home">Trang chủ</string>
+    <string name="cart">Giỏ hàng</string>
+    <string name="feedback">Phản hồi</string>
+    <string name="person">Hồ sơ</string>
+    <string name="order">Chờ giao hàng</string>
+
+
+    // action
+    <string name="action_ok">Đồng ý</string>
+    <string name="action_cancel">Hủy bỏ</string>
+
 </resources>
