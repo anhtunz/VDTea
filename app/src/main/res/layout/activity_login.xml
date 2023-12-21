@@ -9,12 +9,13 @@
     <ImageView
         android:id="@+id/background1"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:src="@drawable/login"
+        android:layout_height="273dp"
+        android:src="@drawable/login_chuan"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:scaleType="fitXY" />
+
 
     <ScrollView
         android:layout_width="match_parent"
