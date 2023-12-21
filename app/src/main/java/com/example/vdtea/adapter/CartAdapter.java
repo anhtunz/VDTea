@@ -1,5 +1,9 @@
 package com.example.vdtea.adapter;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,12 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.vdtea.R;
+import com.example.vdtea.activity.CartActivity;
 import com.example.vdtea.event.CartTouchButtonListener;
 import com.example.vdtea.model.Cart;
 import com.example.vdtea.model.Drinks;
@@ -34,7 +40,7 @@ import java.util.Map;
 public class CartAdapter extends FirebaseRecyclerAdapter<Cart, CartAdapter.cartViewHolder> {
     FirebaseAuth mAuth=FirebaseAuth.getInstance();
     FirebaseUser user;
-    long totalPrice = 0, totalSalePrice = 0,count,count_new,drinksOPrice, drinksSPrice,sale;
+    long totalPrice = 0, totalSalePrice = 0,count,count_new,drinksOPrice, drinksSPrice,sale,totalOPrice_old,totalSPrice_old;
     CartTouchButtonListener cartTouchButtonListener;
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
@@ -67,11 +73,9 @@ public class CartAdapter extends FirebaseRecyclerAdapter<Cart, CartAdapter.cartV
                         .error(com.google.firebase.appcheck.interop.R.drawable.notification_tile_bg)
                         .into(holder.image);
                 holder.drinksOPrice.setText(String.valueOf(drinks.getPrice()) + ",000đ");
-
                 drinksOPrice = drinks.getPrice() ;
                 totalPrice += drinks.getPrice()* cart.getQuantity();
-                Log.d(TAG, "DrinksOPrice " + totalPrice);
-                Log.d(TAG, "DrinksSPrice " + totalSalePrice);
+                totalOPrice_old += drinks.getPrice()* cart.getQuantity();
                 sale = drinks.getSale();
                 Log.d(TAG, "sale " + sale);
                 if(drinks.getSale() == 1){
@@ -86,55 +90,112 @@ public class CartAdapter extends FirebaseRecyclerAdapter<Cart, CartAdapter.cartV
                     totalSalePrice += (drinks.getPrice()-(drinks.getPrice() * drinks.getSale()/ 100)) * cart.getQuantity();
                     drinksSPrice = drinks.getPrice()-(drinks.getPrice() * drinks.getSale()/ 100);
                     Log.d(TAG, "totalSalePrice: " + totalSalePrice);
+
+                    totalSPrice_old = (drinks.getPrice()-(drinks.getPrice() * drinks.getSale()/ 100)) * cart.getQuantity();
+
                 }
                 cartTouchButtonListener.onCartListener(totalPrice,totalSalePrice);
-
                 holder.cart_btnSub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.d(TAG, "Đã click vào nút trừ");
-                        if (cart.getQuantity() == 1){
-                            return;
-                        }
-                        count_new = cart.getQuantity() - 1;
-                        Log.d(TAG, "Countnew: " + count_new);
-                        holder.drinksCount.setText(String.valueOf(count_new));
-//                        Map<String, Object> map = new HashMap<>();
-//                        map.put("quantity",Long.parseLong(String.valueOf(count_new)));
-//                        FirebaseDatabase.getInstance().getReference().child("cart")
-//                                .child(user.getUid())
-//                                .child(getRef(position).getKey()).updateChildren(map);
-                        if(drinks.getSale() == 1){
-                            totalPrice -= drinksOPrice;
-                            totalSalePrice -= drinksOPrice;
-                            cartTouchButtonListener.onCartListener(totalPrice,totalSalePrice);
+                        if (cart.getQuantity() == 1) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(holder.drinksName.getContext());
+                            builder.setTitle("Bạn muốn xóa sản phẩm này?");
+                            builder.setPositiveButton("Xác nhận", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    totalPrice -= drinks.getPrice()* cart.getQuantity();
+                                    if (drinks.getSale() == 1) {
+                                        totalSalePrice -= drinksOPrice * cart.getQuantity();
+                                    } else {
+                                        totalSalePrice -= drinksSPrice * cart.getQuantity();
+                                    }
+                                    Log.e(TAG, "TotalPrice " + totalPrice );
+                                    Log.e(TAG, "TotalSPrice " + totalSalePrice );
+                                    cartTouchButtonListener.onCartListener(totalPrice, totalSalePrice);
+                                    FirebaseDatabase.getInstance().getReference()
+                                            .child("cart")
+                                            .child(user.getUid())
+                                            .child(getRef(position).getKey())
+                                            .removeValue();
+                                }
+                            });
+                            builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(holder.drinksName.getContext(),"Đã hủy",Toast.LENGTH_SHORT);
+                                }
+                            });
+                            builder.show();
                         }
                         else{
-                            totalPrice -= drinksOPrice;
-                            totalSalePrice -= drinksSPrice;
-                            cartTouchButtonListener.onCartListener(totalPrice,totalSalePrice);
+                            count_new = cart.getQuantity() - 1;
+                            holder.drinksCount.setText(String.valueOf(count_new));
+                            FirebaseDatabase.getInstance().getReference().child("cart")
+                                    .child(user.getUid())
+                                    .child(getRef(position).getKey())
+                                    .child("quantity")
+                                    .setValue(count_new)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            totalPrice -= drinks.getPrice()* cart.getQuantity();
+                                            if (drinks.getSale() == 1) {
+                                                totalSalePrice -= drinksOPrice * cart.getQuantity();
+                                            } else {
+                                                totalSalePrice -= drinksSPrice * cart.getQuantity();
+                                            }
+                                            cartTouchButtonListener.onCartListener(totalPrice, totalSalePrice);
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d(TAG, "Update quantity failed: " + e.getMessage());
+                                        }
+                                    });
+                        }
                         }
 
-                    };
+                });
+                holder.cart_btnAdd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        count_new = cart.getQuantity() + 1;
+                        holder.drinksCount.setText(String.valueOf(count_new));
+                        FirebaseDatabase.getInstance().getReference()
+                                .child("cart")
+                                .child(user.getUid())
+                                .child(getRef(position).getKey())
+                                .child("quantity")
+                                .setValue(count_new)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        totalPrice = totalPrice - drinksOPrice * cart.getQuantity();
+                                        if(sale == 1){
+                                            totalSalePrice = totalSalePrice - drinksOPrice * cart.getQuantity();
+                                        }
+                                        else{
+                                            totalSalePrice = totalSalePrice - drinksSPrice * cart.getQuantity();
+                                        }
+                                        cartTouchButtonListener.onCartListener(totalPrice,totalSalePrice);
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d(TAG, "Update quantity failed: " + e.getMessage());
+                                    }
+                                });
+                    }
                 });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-
         });
 
-//        holder.cart_btnAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                count ++;
-//                holder.drinksCount.setText(String.valueOf(count));
-//
-//            }
-//        });
-//        Log.d(TAG, "totalPriceAdapter: "+ totalPrice);
-//        Log.d(TAG, "totalSalePriceAdapter: " + totalSalePrice);
 
     }
 

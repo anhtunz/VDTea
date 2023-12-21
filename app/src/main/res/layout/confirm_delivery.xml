@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/delivery_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Thanh toán đơn hàng"
+                android:layout_toStartOf="@id/delivery_title_price"
+                android:textSize="@dimen/sp_20"
+                android:inputType="number"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/delivery_title_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120,000đ"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/dp_16" />
+
+        </RelativeLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/delivery_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/delivery_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:padding="@dimen/dp_5">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Họ và tên (*)"
+                    android:textSize="@dimen/sp_14" />
+
+                <EditText
+                    android:id="@+id/edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:padding="@dimen/dp_12"
+                    android:background="@drawable/bg_orange_shape_border_gray"
+                    android:imeOptions="actionNext"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Số điện thoại (*)"
+                    android:textSize="@dimen/sp_14" />
+
+                <EditText
+                    android:id="@+id/edt_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:padding="@dimen/dp_12"
+                    android:background="@drawable/bg_orange_shape_border_gray"
+                    android:imeOptions="actionNext"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ giao hàng (*)"
+                    android:textSize="@dimen/sp_14" />
+
+                <EditText
+                    android:id="@+id/edt_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:padding="@dimen/dp_12"
+                    android:background="@drawable/bg_orange_shape_border_gray"
+                    android:imeOptions="actionNext"
+                    android:textSize="@dimen/sp_14" />
+                <TextView
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thanh toán (*)"
+                    android:textSize="@dimen/sp_14" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:hint="Chọn phương thức thanh toán"
+                    style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/delivery_bankSelect"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:id="@+id/delivery_BankLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tên ngân hàng (*)"
+                        android:textSize="@dimen/sp_14" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:hint="Chọn ngân hàng"
+                        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/delivery_bankName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Số tài khoản (*)"
+                        android:textSize="@dimen/sp_14" />
+
+                    <EditText
+                        android:id="@+id/delivery_BankNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:padding="@dimen/dp_12"
+                        android:background="@drawable/bg_orange_shape_border_gray"
+                        android:imeOptions="actionNext"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintTop_toBottomOf="@+id/delivery_body" >
+
+            <TextView
+                android:id="@+id/delivery_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/dp_10"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                android:text="Hủy bỏ"
+                android:background="@color/light_gray"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/delivery_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/holo_orange_light"
+                android:gravity="center"
+                android:padding="@dimen/dp_10"
+                android:text="Đặt hàng"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

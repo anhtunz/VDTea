@@ -13,29 +13,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="5dp"
-        android:background="@color/holo_orange_light">
+        android:background="@color/orange">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/history_lableID"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/white"
-                android:text="Mã đơn hàng:"
-                android:textSize="15dp" />
-            <TextView
-                android:id="@+id/history_txtID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/history_lableID"
-                android:textSize="15dp"
-                android:text="ma don hang"
-                android:layout_marginStart="10dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Đơn hàng"
+            android:gravity="center"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
 
-        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/dp_5" />
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -114,13 +107,12 @@
                 android:textColor="@color/white"
                 android:text="Thực đơn:"
                 android:textSize="15dp" />
-            <TextView
-                android:id="@+id/history_txtmenu"
+
+            <ListView
+                android:id="@+id/history_listmenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/history_lablemenu"
-                android:textSize="15dp"
-                android:text="Thuc don"
                 android:layout_marginStart="10dp" />
         </RelativeLayout>
         <RelativeLayout
@@ -144,11 +136,33 @@
                 android:text="Ngay dat hang"
                 android:layout_marginStart="10dp" />
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/history_lablebanking"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:text="Thanh toán:"
+                android:textSize="15dp" />
+            <TextView
+                android:id="@+id/history_txtbanking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/history_lablebanking"
+                android:textSize="15dp"
+                android:text="Hình thức thanh toán"
+                android:layout_marginStart="10dp" />
+        </RelativeLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
             android:background="@color/white"/>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -158,26 +172,27 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textColor="@color/blue"
+                android:textColor="@color/white"
                 android:text="Tổng tiền:"
                 android:textSize="18dp"
-                android:textStyle="bold"
-
-                />
+                android:textStyle="bold" />
             <TextView
                 android:id="@+id/history_txtamount"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/history_lableamount"
-                android:textSize="15dp"
+                android:textSize="@dimen/dp_18"
                 android:text="Tong tien"
+                android:textStyle="bold"
+                android:textColor="@color/red"
                 android:layout_marginStart="10dp" />
 
             <Button
                 android:id="@+id/history_btnstatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
                 android:layout_toEndOf="@+id/history_txtamount"
                 android:text="Đánh giá" />
         </RelativeLayout>

@@ -120,7 +120,7 @@ public class DrinksDetailFragment extends Fragment implements ItemClickListener,
                     }
                     else{
                         drinksDetail_OPrice.setPaintFlags(drinksDetail_OPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        drinksDetail_SPrice.setText(String.valueOf(price*sale/100)+",000đ");
+                        drinksDetail_SPrice.setText(String.valueOf(price -(price*sale/100))+",000đ");
                     }
                     } else {
                         Log.d(TAG, "onDataChange: Khong tim thay " + data);
@@ -157,7 +157,7 @@ public class DrinksDetailFragment extends Fragment implements ItemClickListener,
                     Log.d(TAG, "drinksprice: " + drinksprice);
                 }
                 else{
-                    drinksprice = price*sale/100;
+                    drinksprice = price - (price*sale/100);
                     Log.d(TAG, "drinkspriceSale: " + drinksprice);
                 }
 
@@ -187,7 +187,6 @@ public class DrinksDetailFragment extends Fragment implements ItemClickListener,
                                         totalPrice.setVisibility(View.GONE);
                                         dash.setVisibility(View.GONE);
                                         lable_addtoCart.setText("Sản phẩm đã có trong giỏ hàng");
-
                                         break;
                                     }
                                     else{
@@ -217,7 +216,7 @@ public class DrinksDetailFragment extends Fragment implements ItemClickListener,
                 }
                 else{
                     drinks_OPrice.setPaintFlags(drinks_OPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                    drinks_SPrice.setText(String.valueOf(price*sale/100)+",000đ");
+                    drinks_SPrice.setText(String.valueOf(price - (price*sale/100))+",000đ");
                 }
 
                 drinks_count.setText(String.valueOf(count));
@@ -272,23 +271,15 @@ public class DrinksDetailFragment extends Fragment implements ItemClickListener,
                         drinks_count.setText(String.valueOf(count_new));
                         drinkscountprice -= drinksprice;
                         toppingprice -= price_sendata;
-                        Log.d(TAG, "pricesenddata from sub:  " + toppingprice);
                         setToTalCount(drinkscountprice, toppingprice);
                     }
                 });
                 addtoCart.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.d(TAG, "Đã click vào button thanh toán");
-                        totalPrice.setText(String.valueOf(totalprice));
-                        Log.d(TAG, "TotalPrice: "+ totalprice);
-                        Log.d(TAG, "SugarAddtoCart: " + drinksExtras_sugar);
-                        Log.d(TAG, "SizeAddtoCart: "+ drinksExtras_size);
-                        Log.d(TAG, "IceAddtoCart "+ drinksExtras_ice);
-                        Log.d(TAG, "Drinks_ID: " + data);
-                        Log.d(TAG, "Count "+ count);
-                        Log.d(TAG, "UID: " + user.getUid());
+                        totalPrice.setText(String.valueOf(totalprice) + ",000đ");
                         add_to_Cart();
+                        dialogPlus.dismiss();
                     }
                 });
             }
@@ -332,14 +323,13 @@ public class DrinksDetailFragment extends Fragment implements ItemClickListener,
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-//                        Toast.makeText(DrinksDetailActivity.this, "Thêm người dùng thành công", Toast.LENGTH_SHORT).show();;
-                        Log.d(TAG, "Thêm vào giỏ hàng thành công!");
+                        Toast.makeText(getContext(), "Thêm vào giỏ hàng thành công!", Toast.LENGTH_SHORT).show();;
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.d(TAG, "Thêm vào giỏ hàng thất bại");
+                        Toast.makeText(getContext(), "Thêm vào giỏ hàng thất bại!", Toast.LENGTH_SHORT).show();;
                     }
                 });
 
@@ -349,7 +339,7 @@ public class DrinksDetailFragment extends Fragment implements ItemClickListener,
     public void setToTalCount(long drinks_price, long sizeprice){
         totalprice = drinks_price + sizeprice;
         Log.d(TAG, "setToTalCount: "+ totalprice);
-        totalPrice.setText(String.valueOf(totalprice));
+        totalPrice.setText(String.valueOf(totalprice) + ",000đ");
     }
 
     @Override
