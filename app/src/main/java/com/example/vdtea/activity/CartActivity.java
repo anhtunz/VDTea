@@ -34,6 +34,7 @@ import com.example.vdtea.model.Drinks;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -85,6 +86,13 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Giỏ hàng của tôi");
+        toolbar.setNavigationIcon(R.drawable.back);
+        toolbar.setNavigationOnClickListener(v -> {
+            Intent intent = new Intent(CartActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
         user = mAuth.getCurrentUser();
         apiService = ApiServiceManager.getApiService();
         cart_rcv = findViewById(R.id.cart_rcv);
