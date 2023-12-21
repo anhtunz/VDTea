@@ -21,21 +21,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.vdtea.MainActivity;
+import com.example.vdtea.activity.MainActivity;
 import com.example.vdtea.R;
-import com.example.vdtea.activity.DrinksDetailActivity;
 import com.example.vdtea.adapter.CommentAdapter;
 import com.example.vdtea.adapter.IceApdapter;
-import com.example.vdtea.adapter.MainAdapter;
 import com.example.vdtea.adapter.SizeAdapter;
 import com.example.vdtea.adapter.SugarAdapter;
-import com.example.vdtea.databinding.FragmentDrinksDetailBinding;
 import com.example.vdtea.event.IceCheckboxListenner;
 import com.example.vdtea.event.ItemClickListener;
 import com.example.vdtea.event.SugarCheckboxListenner;
 import com.example.vdtea.model.Cart;
 import com.example.vdtea.model.Comment;
-import com.example.vdtea.model.Drinks;
 import com.example.vdtea.model.Ice;
 import com.example.vdtea.model.Size;
 import com.example.vdtea.model.Sugar;
@@ -52,8 +48,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
-
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;

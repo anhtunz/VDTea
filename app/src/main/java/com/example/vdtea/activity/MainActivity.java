@@ -1,4 +1,4 @@
-package com.example.vdtea;
+package com.example.vdtea.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -11,12 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
-import com.example.vdtea.activity.BookingActivity;
-import com.example.vdtea.activity.CartActivity;
-import com.example.vdtea.activity.DrinksDetailActivity;
-import com.example.vdtea.activity.LoginActivity;
-import com.example.vdtea.activity.RegisterActivity;
-import com.example.vdtea.activity.UsersActivity;
+import com.example.vdtea.R;
 import com.example.vdtea.adapter.MainAdapter;
 import com.example.vdtea.model.Drinks;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -43,9 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mainAdapter = new MainAdapter(options);
         mainAdapter.startListening();
         recyclerView.setAdapter(mainAdapter);
-//        bottom_navigation();
-
-
+        bottom_navigation();
     }
 
     @Override

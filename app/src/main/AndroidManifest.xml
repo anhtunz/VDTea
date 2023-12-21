@@ -45,6 +45,7 @@
         <activity
             android:name=".activity.CartActivity"
             android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize">
 
             <!-- <intent-filter> -->
@@ -73,7 +74,7 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="false">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
