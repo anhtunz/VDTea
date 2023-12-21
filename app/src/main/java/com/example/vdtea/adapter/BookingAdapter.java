@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vdtea.R;
@@ -36,7 +37,7 @@ public class BookingAdapter extends FirebaseRecyclerAdapter<Booking,BookingAdapt
         holder.name.setText(booking.getUser_name());
         holder.phone_number.setText(booking.getPhone_numer());
         holder.address.setText(booking.getDelivery_address());
-        MenuAdapter menuAdapter = new MenuAdapter(context,R.layout.method_item,booking.getMenu());
+        MenuAdapter menuAdapter = new MenuAdapter(booking.getMenu());
         holder.menu.setAdapter(menuAdapter);
         holder.time_delivery.setText(booking.getOrder_date());
         holder.amount.setText(String.valueOf(booking.getTotal_amount()) + ",000đ");
@@ -63,7 +64,7 @@ public class BookingAdapter extends FirebaseRecyclerAdapter<Booking,BookingAdapt
     class bookingViewHolder extends RecyclerView.ViewHolder{
 
         TextView name, phone_number, address, time_delivery, amount,banking_method;
-        ListView menu;
+        RecyclerView menu;
         Button btn_reviews;
 
         public bookingViewHolder(@NonNull View itemView) {
@@ -71,7 +72,8 @@ public class BookingAdapter extends FirebaseRecyclerAdapter<Booking,BookingAdapt
             name = (TextView) itemView.findViewById(R.id.history_txtname);
             phone_number = (TextView) itemView.findViewById(R.id.history_txtphone);
             address = (TextView) itemView.findViewById(R.id.history_txtaddress);
-            menu  = (ListView) itemView.findViewById(R.id.history_listmenu);
+            menu  = (RecyclerView) itemView.findViewById(R.id.history_listmenu);
+            menu.setLayoutManager(new LinearLayoutManager(itemView.getContext()));
             time_delivery = (TextView) itemView.findViewById(R.id.history_txtorderdate);
             amount = (TextView) itemView.findViewById(R.id.history_txtamount);
             btn_reviews  = (Button) itemView.findViewById(R.id.history_btnstatus);

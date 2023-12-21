@@ -58,6 +58,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -179,12 +180,11 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
                     }
                 });
 
-
+                getListDrinks();
                 btn_cancel.setOnClickListener(v1 -> dialogPlus.dismiss());
                 btn_confirmDelivery.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        getListDrinks();
                         String name = String.valueOf(edt_Name.getText());
                         String phone_number = String.valueOf(edt_Phone.getText());
                         String address = String.valueOf(edt_Address.getText());
@@ -201,11 +201,11 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
                             Toast.makeText(getApplicationContext(), "Vui lòng chọn ngân hàng muốn chuyển khoản!",Toast.LENGTH_SHORT).show();
                             return;
                         }
+                        CompletableFuture<Void> getListDrinksFuture = CompletableFuture.runAsync(() -> {
+                            getListDrinks();
+                        });
+                        getListDrinksFuture.join();
                             Log.e(TAG, "onClick: "+bankchoose );
-//                            Map<String, Object> booking = new HashMap<>();
-//                            booking.put("delivery_address",address);
-//                            booking.put("phone_number",Long.parseLong(phone_number));
-//                            booking.put("user_name",name);
                         Log.d(TAG, "onClick: " + address);
                         Log.d(TAG, "onClick: "+ phone_number);
                         Log.d(TAG, "name: " + name);
@@ -251,7 +251,7 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             Drinks drinks = snapshot.getValue(Drinks.class);
-                                            String drinksFull = drinks.getDrinks_name() + " - " + cart.getDrinks_size();
+                                            String drinksFull = drinks.getDrinks_name() + " - " + cart.getDrinks_size() + " - SL: " + cart.getQuantity();
                                             Booking.Menu menu = new Booking.Menu(drinksFull);
                                             Log.d(TAG, "abcdef: "+ menu.getMenu_detail());
                                             drinksIds.add(menu);
@@ -262,7 +262,6 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
 
                                         }
                                     });
-
                         }
                     }
                     @Override
@@ -270,6 +269,7 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
 
                     }
                 });
+
     }
 
     @Override
