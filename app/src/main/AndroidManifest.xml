@@ -14,15 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VDTea"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".activity.CartActivity"-->
-<!--            android:windowSoftInputMode="adjustResize"-->
-<!--            android:exported="true">-->
-<!--                <intent-filter>-->
-<!--                    <action android:name="android.intent.action.MAIN" />-->
-<!--                    <category android:name="android.intent.category.LAUNCHER" />-->
-<!--                </intent-filter>-->
-<!--        </activity>-->
+        <activity
+            android:name=".activity.UsersActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.CartActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
         <activity
             android:name=".activity.DrinksDetailActivity"
             android:exported="false" />
@@ -51,18 +61,19 @@
         <activity
             android:name=".MainActivity"
             android:exported="false">
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".activity.BookingActivity"
-            android:exported="true">
-                         <intent-filter>
-                         <action android:name="android.intent.action.MAIN" />
-                         <category android:name="android.intent.category.LAUNCHER" />
-                         </intent-filter>
+            android:exported="false">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
