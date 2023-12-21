@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_5">
+
+    <ImageView
+        android:id="@+id/comment_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerVertical="true"
+        android:contentDescription="asddadas" />
+
+    <TextView
+        android:id="@+id/comment_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/comment_avatar"
+        android:text="Username"
+        android:textSize="@dimen/dp_16"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/dp_5" />
+
+    <TextView
+        android:id="@+id/comment_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/comment_username"
+        android:text="21/12/2132 10h21"
+        android:paddingBottom="@dimen/dp_5"
+        android:textSize="@dimen/dp_12"
+        android:textStyle="bold"
+        android:alpha="0.7"
+        android:layout_marginLeft="@dimen/dp_5" />
+
+    <TextView
+        android:id="@+id/comment_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/comment_avatar"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:layout_below="@id/comment_username"
+        android:textSize="@dimen/sp_14"
+        android:text="thaaioajsiodjakldajsdiasjkdhasjkdy" />
+
+</RelativeLayout>

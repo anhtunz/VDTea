@@ -53,6 +53,7 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Drinks, MainAdapter.myV
             holder.priceOriginal.setPaintFlags(holder.priceOriginal.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.priceSale.setText(String.valueOf( (model.getPrice()-(model.getPrice() * model .getSale()/ 100) ) + ",000đ"));
         }
+        Log.d(TAG, "onBindViewHolder: "+ model.getDrinks_image());
         Glide.with(holder.img.getContext())
                 .load(model.getDrinks_image())
                 .placeholder(com.google.firebase.database.R.drawable.common_google_signin_btn_icon_dark_normal)

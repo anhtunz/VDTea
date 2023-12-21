@@ -170,7 +170,6 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
                                 }
                             });
                         } else {
-                            // Xử lý lỗi khi cuộc gọi không thành công
                             Log.e(TAG, "API call failed with code: " + response.code());
                         }
                     }
@@ -189,7 +188,6 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
                         String phone_number = String.valueOf(edt_Phone.getText());
                         String address = String.valueOf(edt_Address.getText());
                         String bankNumber = String.valueOf(edt_bankNumber.getText());
-                        String bankName = String.valueOf(bankChoose.getText());
                         String bankchoose = String.valueOf(paymentMethod.getText());
                         String price = String.valueOf(totalSPrice);
                         if (TextUtils.isEmpty(name)|| TextUtils.isEmpty(phone_number) || TextUtils.isEmpty(address) || TextUtils.isEmpty(bankchoose)){
@@ -214,7 +212,7 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
                         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
                         String currentDateAndTime = sdf.format(new Date());
                         Log.d(TAG, "onDataChange: " + currentDateAndTime);
-                        Log.d(TAG, "onDataChange2: "+ drinksIds.toString());
+                        Log.d(TAG, "onDataChange2: "+ drinksIds.size());
                         Booking booking = new Booking(address,drinksIds,currentDateAndTime,phone_number,0,Long.parseLong(price),name,bankchoose);
                         FirebaseDatabase.getInstance().getReference().child("booking")
                                 .child(user.getUid())
@@ -245,18 +243,19 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot cartSnapshot : snapshot.getChildren()) {
                             Cart cart = cartSnapshot.getValue(Cart.class);
-                            Log.d(TAG,  "drinks_id: " + cart.getDrinks_id());
+                            String drinksID = cart.getDrinks_id();
                             FirebaseDatabase.getInstance().getReference().child("drinks")
                                     .child(cart.getDrinks_id()).addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             Drinks drinks = snapshot.getValue(Drinks.class);
+
                                             String drinksFull = drinks.getDrinks_name() + " - " + cart.getDrinks_size() + " - SL: " + cart.getQuantity();
-                                            Booking.Menu menu = new Booking.Menu(drinksFull);
+                                            Booking.Menu menu = new Booking.Menu(drinksFull,drinksID);
                                             Log.d(TAG, "abcdef: "+ menu.getMenu_detail());
+                                            Log.d(TAG, "anbcdef: " + menu.getDrinks_id());
                                             drinksIds.add(menu);
                                         }
-
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
 
@@ -269,7 +268,6 @@ public class CartActivity extends AppCompatActivity implements CartTouchButtonLi
 
                     }
                 });
-
     }
 
     @Override
