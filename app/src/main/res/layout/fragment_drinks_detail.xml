@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.DrinksDetailFragment">
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,7 +18,6 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize" />
-
         </com.google.android.material.appbar.AppBarLayout>
         <ImageView
             android:id="@+id/DrinksDetail_image"
@@ -32,6 +29,8 @@
             android:src="@drawable/milktea_icon" />
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/DrinksDetail_name"
             app:layout_constraintTop_toBottomOf="@+id/DrinksDetail_image"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,14 +41,15 @@
             android:textSize="@dimen/dp_20" />
 
         <TextView
+            android:layout_height="80dp"
+            android:layout_width="match_parent"
             android:id="@+id/DrinksDetail_description"
             app:layout_constraintTop_toBottomOf="@+id/DrinksDetail_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/long_text"
             style="@style/lwMatch_lhWrap_MgTopStart10"
-            android:alpha="0.8"
-            />
+            android:alpha="0.8" />
         <LinearLayout
             android:id="@+id/DrinksDetail_SoldRate"
             android:layout_width="match_parent"
@@ -86,8 +86,7 @@
             app:layout_constraintTop_toBottomOf="@+id/DrinksDetail_SoldRate"
             app:layout_constraintLeft_toLeftOf="parent"
             android:orientation="horizontal"
-            style="@style/MgStaTop10"
-            >
+            style="@style/MgStaTop10">
 
             <TextView
                 android:id="@+id/drinksOriginalPrice"
@@ -140,13 +139,11 @@
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/DrinksDetail_CommentRCV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/DrinksDetail_lableComment"
-            style="@style/MgStaTop10"
-            app:layout_constraintHeight_max="100dp" />
-
-
+            style="@style/MgStaTop10" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
     tools:context=".MainActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Danh sách đồ uống"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/dp_24"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv"
             android:scrollbars="vertical"
+            android:padding="@dimen/dp_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBaseline_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,6 +42,7 @@
                 <com.google.android.material.bottomappbar.BottomAppBar
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:backgroundTint="@color/holo_orange_dark"
                     android:layout_gravity="bottom">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -148,3 +162,5 @@
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>

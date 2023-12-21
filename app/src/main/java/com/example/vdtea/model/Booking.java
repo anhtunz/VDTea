@@ -95,12 +95,13 @@ public class Booking {
 
     public static class Menu{
         private String menu_detail;
-
+        private String drinks_id;
         public Menu() {
         }
 
-        public Menu(String menu_detail) {
+        public Menu(String menu_detail, String drinks_id) {
             this.menu_detail = menu_detail;
+            this.drinks_id = drinks_id;
         }
 
         public String getMenu_detail() {
@@ -109,6 +110,14 @@ public class Booking {
 
         public void setMenu_detail(String menu_detail) {
             this.menu_detail = menu_detail;
+        }
+
+        public String getDrinks_id() {
+            return drinks_id;
+        }
+
+        public void setDrinks_id(String drinks_id) {
+            this.drinks_id = drinks_id;
         }
     }
 }

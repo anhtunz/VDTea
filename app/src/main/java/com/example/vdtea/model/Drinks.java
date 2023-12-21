@@ -1,19 +1,28 @@
 package com.example.vdtea.model;
 public class Drinks {
     private String drinks_name, decription, drinks_image,drinks_id;
-    private long price, rating, sale, sold_count;
+    private long price, sale, sold_count;
 
+    private double rating;
     public Drinks(){}
 
-    public Drinks(String drinks_name, String decription, String drinks_image, String drinks_id, long price, long rating, long sale, long sold_count) {
+    public Drinks(String drinks_name, String decription, String drinks_image, String drinks_id, long price, long sale, long sold_count, double rating) {
         this.drinks_name = drinks_name;
         this.decription = decription;
         this.drinks_image = drinks_image;
         this.drinks_id = drinks_id;
         this.price = price;
-        this.rating = rating;
         this.sale = sale;
         this.sold_count = sold_count;
+        this.rating = rating;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
     public String getDrinks_id() {
@@ -56,13 +65,6 @@ public class Drinks {
         this.price = price;
     }
 
-    public long getRating() {
-        return rating;
-    }
-
-    public void setRating(long rating) {
-        this.rating = rating;
-    }
 
     public long getSale() {
         return sale;

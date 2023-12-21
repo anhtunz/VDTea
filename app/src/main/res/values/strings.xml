@@ -24,5 +24,6 @@
     // action
     <string name="action_ok">Đồng ý</string>
     <string name="action_cancel">Hủy bỏ</string>
+    <string name="rating">Đánh giá sản phẩm</string>
 
 </resources>

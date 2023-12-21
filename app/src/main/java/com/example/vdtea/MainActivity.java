@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
         mainAdapter = new MainAdapter(options);
         mainAdapter.startListening();
         recyclerView.setAdapter(mainAdapter);
-
-        bottom_navigation();
+//        bottom_navigation();
 
 
     }

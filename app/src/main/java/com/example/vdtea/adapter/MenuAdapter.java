@@ -55,7 +55,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         Booking.Menu menu = menuList.get(position);
         holder.menu_detail.setTextSize(size);
         holder.menu_detail.setPadding(0,0,0,3);
-        holder.menu_detail.setText(menu != null ? "(*)" +  menu.getMenu_detail() : "");
+        holder.menu_detail.setText(menu != null ? "(*) " +  menu.getMenu_detail() : "");
     }
 
     @Override

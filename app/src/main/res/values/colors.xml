@@ -42,4 +42,12 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+    <color name="star_color">
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
+            <item android:state_pressed="true" android:color="@color/red" />
+            <item android:state_checked="true" android:color="@color/orange" />
+            <item android:color="@color/gray" />
+        </selector>
+    </color>
+
 </resources>

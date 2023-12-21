@@ -69,4 +69,6 @@
     <dimen name="define_dimen_180">180dp</dimen>
     <dimen name="define_dimen_200">200dp</dimen>
     <dimen name="define_dimen_300">300dp</dimen>
+
+    <integer name="int_5">5</integer>
 </resources>
