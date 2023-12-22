@@ -30,7 +30,7 @@
             android:id="@+id/imageView"
             android:layout_width="@dimen/define_dimen_100"
             android:layout_height="@dimen/define_dimen_100"
-            android:src="@drawable/milktea_icon"
+            android:src="@drawable/avatarclone"
             android:layout_gravity="center_horizontal"/>
 
         <TextView

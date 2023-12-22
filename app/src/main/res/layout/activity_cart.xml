@@ -22,7 +22,7 @@
         android:id="@+id/txt_cart_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gior hàng của bạn đang rỗng!"
+        android:text="Giỏ hàng của bạn đang rỗng!"
         android:textColor="@color/black"
         android:visibility="invisible"
         android:textSize="@dimen/sp_16"

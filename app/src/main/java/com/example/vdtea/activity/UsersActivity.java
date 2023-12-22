@@ -15,10 +15,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.vdtea.R;
 import com.example.vdtea.databinding.ActivityUsersBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,18 +34,18 @@ public class UsersActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     TextView tv_email;
 
+    ImageView avatar;
     ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        avatar = findViewById(R.id.imageView);
         // Initialize the binding object using Data Binding
         binding = ActivityUsersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         tv_email = findViewById(R.id.tv_email);
         mAuth = FirebaseAuth.getInstance();
-
         // Now you can access the btnChangePassword button from the binding object
         binding.btnChangePassword.setOnClickListener(v -> {
             changePasswordDialog();
